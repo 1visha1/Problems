@@ -1,5 +1,5 @@
 public class LongestSubArrayWithKsum {
-    public static int longestSubArrayWithSumK(int[] nums, int k){
+    public static int brut(int[] nums, int k){
         int len =0;
 
         for(int i=0;i<nums.length;i++){
@@ -21,7 +21,8 @@ public class LongestSubArrayWithKsum {
 
         int[] arr = {10, 5, 2, 7, 1, 9};
     
-        System.out.println(longestSubArrayWithSumK(arr, 15));
+        System.out.println(brut(arr, 15));
     }
     
 }
+
