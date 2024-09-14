@@ -3,30 +3,30 @@ import java.util.Arrays;
 import java.util.List;
 
 public class leedCode40CombinationSumII {
-    public static void cb(int[] arr, int i, int t, List<Integer> ds, List<List<Integer>> ans){
-        if(t == 0){
-            ans.add(new ArrayList<Integer>(ds));
+    public static void cb(int ind, int[] arr, int tr, List<Integer> ds, List<List<Integer>> ans){
+        if(tr == 0){
+            ans.add(new ArrayList<>(ds));
             return;
         }
-        for(int j=i;j<arr.length;j++){
-            if(j>i && arr[j]==arr[j-1]) continue;
-            if(arr[j]>t){
+        for(int i=ind; i<arr.length;i++){
+            if(arr[i]>tr){
                 break;
             }
-
-           
-            ds.add(arr[j]);
-            cb(arr, j+1, t-arr[j], ds, ans);
+            if(i>ind && arr[i]==arr[i-1])continue;
+             
+            
+            ds.add(arr[i]);
+            cb(i+1, arr, tr-arr[i], ds, ans);
             ds.remove(ds.size()-1);
             
         }
     }
     public static void main(String[] args) {
         int[] arr = {1,1,1,2,2};
+        List<List<Integer>> ans = new ArrayList<>();
         List<Integer> ds = new ArrayList<>();
-        List<List<Integer>> list = new ArrayList<>();
         Arrays.sort(arr);
-        cb(arr, 0, 4, ds, list);
-        System.out.println(list);
+        cb(0, arr, 4, ds, ans);
+        System.out.println(ans);
     }
 }
